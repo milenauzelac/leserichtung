@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Leserichtungs-Spiel</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      font-family: "Suisse BP Int'l", Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #wort {
+      font-size: 5em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div id="wort">START</div>
+
+<script>
+const woerter = ['AKTION', 'AKT', 'BANK', 'BIOTIN', 'BISS', 'BOOT', 'CANVAS', 'CASANOVA', 'CASINO', 'IKON', 'INSTINKT', 'KANON', 'KINO', 'KIOSK', 'KITA', 'KNAST', 'KONTAKT', 'KOST', 'NANO', 'NATION', 'NIKOTIN', 'OKTAV', 'SOS', 'STAB', 'STATION', 'STOCK', 'TABAK', 'TAKTIK', 'TAT', 'TOAST', 'VATIKAN'];
+
+function reverse(str) {
+  return str.split('').reverse().join('');
+}
+
+function neuesWort() {
+  const zufall = Math.random();
+  const wort = woerter[Math.floor(Math.random() * woerter.length)];
+  let anzeige = "";
+
+  if (zufall < 0.5) {
+    anzeige = wort; // vorwärts
+  } else {
+    anzeige = reverse(wort); // rückwärts
+  }
+
+  document.getElementById("wort").textContent = anzeige;
+}
+
+neuesWort();
+setInterval(neuesWort, 1000);
+</script>
+
+</body>
+</html>
